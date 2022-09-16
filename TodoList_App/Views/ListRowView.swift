@@ -14,6 +14,7 @@ struct ListRowView: View {
     var body: some View {
         HStack {
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle") // ternary operator
+                .foregroundColor(item.isCompleted ? .green : .red)
             Text(item.title)
             Spacer()
         }

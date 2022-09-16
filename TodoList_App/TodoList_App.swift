@@ -11,7 +11,7 @@ import SwiftUI
 struct TodoList_App: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            NavigationView{ // It is like BrowserRouter in React
                 ListView()
             }
         }

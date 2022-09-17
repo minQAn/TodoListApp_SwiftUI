@@ -18,6 +18,11 @@ struct ListView: View {
         List{
             ForEach(listViewModel.items) { item in
                 ListRowView(item: item) //item is string here
+                    .onTapGesture {
+                        withAnimation(.linear(duration: 0.1)){
+                            listViewModel.updateItem(item: item)
+                        }
+                    }
             }
 //            .onDelete(perform: {indexSet in items.remove(atOffsets: indexSet)})
             .onDelete(perform: listViewModel.deleteItem) // automatically sent the index??

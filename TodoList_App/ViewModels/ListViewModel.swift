@@ -7,6 +7,16 @@
 
 import Foundation
 
+/*
+ CRUD FUNCTIONS
+ 
+ Create
+ Read
+ Update
+ Delete
+ 
+ */
+
 class ListViewModel: ObservableObject {
     
     // What is @Published?
@@ -35,5 +45,18 @@ class ListViewModel: ObservableObject {
     func addItem(title: String){
         let newItem = ItemModel(title: title, isCompleted: false)
         items.append(newItem)
+    }
+    func updateItem(item: ItemModel){ // 여기 문법 이해 안됨 what is firstIndex? 처음 찾은 인덱스?
+//        if let index = items.firstIndex { existingItem in
+//            return existingItem.id == item.id
+//        }{ // if there is no item matches, firstIndex returns nil so..
+//
+//        }
+        
+        // totally same as above 3 lines of code
+        if let index = items.firstIndex(where: { $0.id == item.id }){
+            items[index] = item.updateCompletion()
+        }
+        
     }
 }

@@ -14,21 +14,28 @@ struct ListView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
-        // It's in a NavigationView !!
-        List{
-            ForEach(listViewModel.items) { item in
-                ListRowView(item: item) //item is string here
-                    .onTapGesture {
-                        withAnimation(.linear(duration: 0.1)){
-                            listViewModel.updateItem(item: item)
-                        }
+        ZStack{
+            if listViewModel.items.isEmpty{
+                NoItemsView()
+                    .transition(AnyTransition.opacity.animation(.easeIn)) 
+            } else {
+                // It's in a NavigationView !!
+                List{
+                    ForEach(listViewModel.items) { item in
+                        ListRowView(item: item) //item is string here
+                            .onTapGesture {
+                                withAnimation(.linear(duration: 0.1)){
+                                    listViewModel.updateItem(item: item)
+                                }
+                            }
                     }
+        //            .onDelete(perform: {indexSet in items.remove(atOffsets: indexSet)})
+                    .onDelete(perform: listViewModel.deleteItem) // automatically sent the index??
+                    .onMove(perform: listViewModel.moveItem)  // EditButton 누른 후, 리스트 위치 이동가능하게 함
+                }
+                .listStyle(PlainListStyle())
             }
-//            .onDelete(perform: {indexSet in items.remove(atOffsets: indexSet)})
-            .onDelete(perform: listViewModel.deleteItem) // automatically sent the index??
-            .onMove(perform: listViewModel.moveItem)  // EditButton 누른 후, 리스트 위치 이동가능하게 함
         }
-        .listStyle(PlainListStyle())
         .navigationTitle("Todo List 📝")
         .navigationBarItems(
             leading: EditButton(), // onDelete를 List에 추가했더니 누르니까 delete창이뜸

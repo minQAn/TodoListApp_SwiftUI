@@ -8,7 +8,8 @@
 import Foundation
 
 // Immutable Struct
-struct ItemModel: Identifiable{ // Identifiable means “this type can be identified uniquely.”, that' why it needs ID
+struct ItemModel: Identifiable, Codable { // Identifiable means “this type can be identified uniquely.”, that' why it needs ID,
+    // Codable: associated with decode and encode
     let id: String // random Universally Unique Identifiers
     let title: String
     let isCompleted: Bool

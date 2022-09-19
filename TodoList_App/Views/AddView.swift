@@ -24,7 +24,8 @@ struct AddView: View {
                     // placeholder color 변경은 ZStack과 isEmpty로 하는거같음..
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1))) // edit -> format -> show colors
+//                    .background(Color(#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1))) // edit -> format -> show colors
+                    .background(Color(UIColor.secondarySystemBackground)) // secondarySystemBackground?
                     .cornerRadius(10)
                     
                 Button(action: saveButtonPressed, label: {
@@ -66,9 +67,26 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{
-            AddView()
+        Group {
+            NavigationView{
+                AddView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(ListViewModel())
+            .previewInterfaceOrientation(.landscapeLeft)
+            
+            NavigationView{
+                AddView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(ListViewModel())
+            .previewInterfaceOrientation(.portraitUpsideDown)
+            NavigationView{
+                AddView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(ListViewModel())
         }
-        .environmentObject(ListViewModel())
+       
     }
 }

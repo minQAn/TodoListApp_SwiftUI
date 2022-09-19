@@ -18,8 +18,10 @@ struct NoItemsView: View {
                 Text("There are no items")
                     .font(.title)
                     .fontWeight(.semibold)
+                
                 Text("Are you a productive person? I think you should click the add button and add a buch of items to your todo list!")
                     .padding(.bottom, 20)
+                
                 NavigationLink(
                     destination: AddView(),
                     label: {
@@ -40,6 +42,7 @@ struct NoItemsView: View {
                 .scaleEffect(animate ? 1.1 : 1.0)
                 .offset(y: animate ? -7 : 0)
             }
+            .frame(maxWidth: 400) // for landscape mode
             .multilineTextAlignment(.center)
             .padding(40)
             .onAppear(perform: addAnimation)
@@ -48,15 +51,16 @@ struct NoItemsView: View {
     }
     
     func addAnimation(){
-        guard !animate else { return }
+        guard !animate else { return } // 여기가 이해가 안감.. 에니메이션은 계속 무한반복하는데..
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        //DispatchQueue is like setTimeout() in javascript..
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // 1.5초뒤에 실행
             withAnimation(
                 Animation
                     .easeInOut(duration: 2.0)
                     .repeatForever()
             ){
-                animate.toggle()
+                animate.toggle() // same as animate = !animate
             }
         }
     }
@@ -68,5 +72,6 @@ struct NoItemsView_Previews: PreviewProvider {
             NoItemsView()
                 .navigationTitle("Title")
         }
+        .previewInterfaceOrientation(.portrait)
     }
 }

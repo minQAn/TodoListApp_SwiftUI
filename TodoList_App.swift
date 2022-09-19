@@ -18,6 +18,7 @@ struct TodoList_App: App {
             NavigationView{ // It is like BrowserRouter in React
                 ListView()
             }
+            .navigationViewStyle(StackNavigationViewStyle()) // IPad 스타일은 달라서 이렇게 해줘야 똑같이 됨
             .environmentObject(listViewModel) // to allow all child components can use the ListViewModel
         }
     }

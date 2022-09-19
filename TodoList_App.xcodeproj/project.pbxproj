@@ -72,6 +72,7 @@
 		EFE1308928D21D4300E8526B = {
 			isa = PBXGroup;
 			children = (
+				EFE1309528D21D4300E8526B /* TodoList_App.swift */,
 				EFE1309428D21D4300E8526B /* TodoList_App */,
 				EFE1309328D21D4300E8526B /* Products */,
 			);
@@ -91,7 +92,6 @@
 				EF0D66B328D4E99000C7BD69 /* Models */,
 				EF0D66B628D5047000C7BD69 /* ViewModels */,
 				EFCFDEA328D2528500C772E3 /* Views */,
-				EFE1309528D21D4300E8526B /* TodoList_App.swift */,
 				EFE1309928D21D4700E8526B /* Assets.xcassets */,
 				EFE1309B28D21D4700E8526B /* Preview Content */,
 			);

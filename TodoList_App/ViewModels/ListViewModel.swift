@@ -2,7 +2,7 @@
 //  ListViewModel.swift
 //  TodoListdoList_app
 //
-//  Created by 안민규 on 2022-09-16.
+//  Created by Min Ku An on 2022-09-16.
 //
 
 import Foundation
@@ -19,7 +19,6 @@ import Foundation
 
 class ListViewModel: ObservableObject {
     
-    // What is @Published?
     @Published var items: [ItemModel] = []{
         didSet{ // call anytime we set this items or anytime we change this items array, so don't have to set "saveItems" function each after other CRUD functions.
             saveItems()
@@ -63,7 +62,7 @@ class ListViewModel: ObservableObject {
         items.append(newItem)
         //saveItems()
     }
-    func updateItem(item: ItemModel){ // 여기 문법 이해 안됨 what is firstIndex? 처음 찾은 인덱스?
+    func updateItem(item: ItemModel){
 //        if let index = items.firstIndex { existingItem in
 //            return existingItem.id == item.id
 //        }{ // if there is no item matches, firstIndex returns nil so..

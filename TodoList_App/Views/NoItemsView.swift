@@ -2,7 +2,7 @@
 //  NoItemsView.swift
 //  TodoListdoList_app
 //
-//  Created by 안민규 on 2022-09-18.
+//  Created by Min Ku An on 2022-09-18.
 //
 
 import SwiftUI
@@ -48,6 +48,9 @@ struct NoItemsView: View {
             .onAppear(perform: addAnimation)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onDisappear{
+            animate = false //화면나갈때
+        }
     }
     
     func addAnimation(){
